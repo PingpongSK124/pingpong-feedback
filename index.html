@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PingPong Feedback</title>
   <style>
     body {
@@ -54,20 +54,21 @@
   </style>
 </head>
 <body>
+  <body>
   <h2>PingPong Feedback</h2>
-
-  <form id="feedbackForm">
-    <input type="text" name="mobile" placeholder="Mobile Number (optional)" />
+  <form action="https://script.google.com/macros/s/AKfycbwVrDBp1GaH37RYlFGCFm0vOkDg7adPVDFOb4drjXIm1SB4Gxq1g3gqH2EzaPKLgdQ4GQ/exec" method="POST">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="text" name="name" placeholder="Mobile Number (optional)">
 
     <label>How was the food?</label>
     <div class="stars" id="starRating">
       <span class="star" data-value="1">★</span>
       <span class="star" data-value="2">★</span>
-      <span class="star" data-value="3">★</span>
+      <span class="star" data-value="3">★</span>   
       <span class="star" data-value="4">★</span>
       <span class="star" data-value="5">★</span>
     </div>
-    <input type="hidden" name="rating" id="ratingInput" required />
+    <input type="hidden" name="rating" id="ratingInput" required>
 
     <textarea name="feedback" rows="4" placeholder="Write your feedback here..." required></textarea>
     <button type="submit">Send Feedback</button>
@@ -84,29 +85,6 @@
         for (let i = 0; i <= index; i++) {
           stars[i].classList.add('selected');
         }
-      });
-    });
-
-    document.getElementById('feedbackForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      const form = e.target;
-      const formData = new FormData(form);
-
-      fetch("https://script.google.com/macros/s/AKfycbwVrDBp1GaH37RYlFGCFm0vOkDg7adPVDFOb4drjXIm1SB4Gxq1g3gqH2EzaPKLgdQ4GQ/exec", {
-        method: "POST",
-        body: formData
-      })
-      .then(response => {
-        if (response.ok) {
-          window.location.href = "https://pingpongSK124.github.io/feedback-form/thank-you.html";
-        } else {
-          alert("Something went wrong. Please try again.");
-        }
-      })
-      .catch(error => {
-        console.error("Error:", error);
-        alert("Error sending feedback. Check your internet or try again.");
       });
     });
   </script>
