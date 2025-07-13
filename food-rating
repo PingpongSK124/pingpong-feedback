@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PingPong Feedback</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      background: #d5e6dc;
+    }
+    h2 {
+      color: #175e3d;
+    }
+    form {
+      margin-top: 20px;
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
+    label {
+      display: block;
+      margin-top: 20px;
+      font-weight: bold;
+      color: #175e3d;
+    }
+    .stars {
+      display: flex;
+      justify-content: space-between;
+      max-width: 240px;
+      margin: 10px 0;
+    }
+    .star {
+      font-size: 2rem;
+      cursor: pointer;
+      color: #ccc;
+      transition: color 0.2s;
+    }
+    .star.selected, .star:hover {
+      color: #175e3d;
+    }
+    button {
+      background-color: #175e3d;
+      color: white;
+      font-weight: bold;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <body>
+  <h2>PingPong Feedback</h2>
+  <form action="https://formsubmit.co/pingponghospitality@gmail.com" method="POST">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="text" name="name" placeholder="Mobile Number (optional)">
+
+    <label>How was the food?</label>
+    <div class="stars" id="starRating">
+      <span class="star" data-value="1">★</span>
+      <span class="star" data-value="2">★</span>
+      <span class="star" data-value="3">★</span>   
+      <span class="star" data-value="4">★</span>
+      <span class="star" data-value="5">★</span>
+    </div>
+    <input type="hidden" name="rating" id="ratingInput" required>
+
+    <textarea name="feedback" rows="4" placeholder="Write your feedback here..." required></textarea>
+    <button type="submit">Send Feedback</button>
+  </form>
+
+  <script>
+    const stars = document.querySelectorAll('.star');
+    const ratingInput = document.getElementById('ratingInput');
+
+    stars.forEach((star, index) => {
+      star.addEventListener('click', () => {
+        ratingInput.value = star.getAttribute('data-value');
+        stars.forEach(s => s.classList.remove('selected'));
+        for (let i = 0; i <= index; i++) {
+          stars[i].classList.add('selected');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
